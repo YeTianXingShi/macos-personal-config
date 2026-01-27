@@ -13,6 +13,16 @@
 - `apps/`: 应用安装列表 (`Brewfile`)
 - `dotfiles/`: 配置文件 (例如 `.zshrc`)
 
+## 配置文件清单
+
+本项目托管了以下核心工具的配置文件：
+
+| 工具 | 路径 | 说明 |
+| :--- | :--- | :--- |
+| **Zsh** | `dotfiles/.zshrc` | 终端 Shell 配置，集成了 Fzf、Zoxide、Eza 等增强工具 |
+| **Ghostty** | `dotfiles/Library/.../config` | 现代终端模拟器 Ghostty 的样式与按键配置 |
+| **Opencode** | `dotfiles/.config/opencode/*.json` | AI 辅助编程工具 Opencode 的偏好设置 |
+
 ## 手动配置指南
 
 ### 1. 安装 Homebrew & 应用
@@ -45,6 +55,27 @@ ln -s $(pwd)/dotfiles/.zshrc ~/.zshrc
 
 # 3. 重新加载配置
 source ~/.zshrc
+```
+
+**配置 Ghostty 终端:**
+
+```bash
+# 创建配置目录
+mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
+
+# 创建软链接
+ln -s "$(pwd)/dotfiles/Library/Application Support/com.mitchellh.ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+```
+
+**配置 Opencode (可选):**
+
+```bash
+# 创建配置目录
+mkdir -p ~/.config/opencode
+
+# 创建软链接
+ln -s "$(pwd)/dotfiles/.config/opencode/oh-my-opencode.json" ~/.config/opencode/oh-my-opencode.json
+ln -s "$(pwd)/dotfiles/.config/opencode/antigravity.json" ~/.config/opencode/antigravity.json
 ```
 
 ## 如何维护 Brewfile
