@@ -8,11 +8,16 @@
   "background_task": {
     "defaultConcurrency": 5,
     "providerConcurrency": {
-      "google": 10,
-      "antigravity": 10
+      "google": 15,
+      "opencode": 5,
+      "deepseek": 3
     },
     "modelConcurrency": {
-      "google/antigravity-gemini-3-flash": 15
+      "google/antigravity-gemini-3-flash": 20,
+      "google/antigravity-gemini-3-pro": 10,
+      "google/antigravity-claude-sonnet-4-5": 8,
+      "google/antigravity-claude-sonnet-4-5-thinking": 5,
+      "google/antigravity-claude-opus-4-5-thinking": 2
     }
   },
   "git_master": {
@@ -52,7 +57,7 @@
     }
   },
   "categories": {
-    "visual": {
+    "visual-engineering": {
       "model": "google/antigravity-gemini-3-pro",
       "temperature": 0.7,
       "prompt_append": "请使用中文描述视觉设计和UI组件。Use shadcn/ui components and Tailwind CSS if applicable."
@@ -62,20 +67,33 @@
       "temperature": 0.3,
       "prompt_append": "请务必使用中文（简体中文）极其简练地回复。"
     },
-    "business-logic": {
+    "ultrabrain": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
+      "reasoningEffort": "high",
       "temperature": 0.1,
-      "prompt_append": "请务必使用中文（简体中文）进行深度分析。"
+      "prompt_append": "请务必使用中文（简体中文）进行深度分析和架构设计。"
     },
-    "writing": {
+    "artistry": {
       "model": "google/antigravity-gemini-3-pro",
-      "temperature": 0.5,
-      "prompt_append": "请使用中文编写文档，文档风格应当专业且易读，结构清晰。"
+      "variant": "high",
+      "temperature": 0.9,
+      "prompt_append": "请使用中文进行创意性思考，提供新颖独特的方案。"
     },
-    "frontend": {
+    "unspecified-low": {
       "model": "google/antigravity-claude-sonnet-4-5",
       "temperature": 0.2,
-      "prompt_append": "请使用中文解释你的设计思路和代码变更。专注于现代化的前端交互设计和最佳实践。"
+      "prompt_append": "请使用中文（简体中文）高效完成任务。"
+    },
+    "unspecified-high": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "variant": "max",
+      "temperature": 0.1,
+      "prompt_append": "请使用中文（简体中文）进行全面深入的分析。"
+    },
+    "writing": {
+      "model": "google/antigravity-gemini-3-flash",
+      "temperature": 0.5,
+      "prompt_append": "请使用中文编写文档，文档风格应当专业且易读，结构清晰。"
     }
   },
   "agents": {
@@ -95,15 +113,18 @@
       "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese."
     },
     "metis": {
-      "model": "google/antigravity-claude-sonnet-4-5",
+      "model": "google/antigravity-claude-sonnet-4-5-thinking",
+      "reasoningEffort": "medium",
       "prompt_append": "请务必使用中文（简体中文）协助制定计划，指出潜在的遗漏点。"
     },
     "momus": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
+      "reasoningEffort": "high",
       "prompt_append": "请务必使用中文（简体中文）严格审查计划的可行性和逻辑漏洞。"
     },
     "oracle": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
+      "reasoningEffort": "high",
       "prompt_append": "请务必使用中文（简体中文）进行回复和分析，专注于战略层面的建议。"
     },
     "explore": {
