@@ -143,6 +143,10 @@
     "librarian": {
       "model": "google/antigravity-gemini-3-flash",
       "prompt_append": "请使用中文总结文档和搜索结果，保持客观准确。"
+    },
+    "atlas": {
+      "model": "google/antigravity-claude-sonnet-4-5",
+      "prompt_append": "请使用中文（简体中文）执行任务，严格遵循计划步骤。"
     }
   }
 }
