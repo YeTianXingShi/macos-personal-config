@@ -1,0 +1,83 @@
+# ==========================================
+# Ghostty Configuration
+# 整理时间: 2025-01-27
+# ==========================================
+
+# --- 1. 字体与排版 (Font & Text) ---
+font-family = "Maple Mono NF CN"
+font-size = 14
+
+# 连字特性 (如 => 会变成连体符号)
+font-feature = calt
+font-feature = liga
+
+# 字体微调：增加行高，让排版更舒展
+adjust-cell-height = 10%
+# 微调下划线位置，防止切到汉字底部
+adjust-underline-position = 2
+
+
+# --- 2. 主题与外观 (Appearance) ---
+# 主题：Catppuccin Mocha
+theme = Catppuccin Mocha
+
+# 背景：透明度与模糊 (打造 macOS 原生毛玻璃质感)
+background-opacity = 0.90
+background-blur-radius = 20
+
+# 光标：使用不闪烁的块状光标，提升专注度
+cursor-style = block
+cursor-style-blink = false
+
+
+# --- 3. 窗口管理 (Window Management) ---
+# 启动时的默认尺寸 (宽x高，字符单位)
+window-width = 120
+window-height = 40
+
+# 内边距：给内容留出呼吸空间
+window-padding-x = 12
+window-padding-y = 12
+
+# 新建 Tab/窗口时继承当前路径
+window-inherit-working-directory = true
+
+# 关闭最后一个窗口时不完全退出程序 (符合 macOS 习惯)
+quit-after-last-window-closed = false
+
+
+# --- 4. macOS 深度集成 (macOS Integration) ---
+# 标题栏样式：透明 (沉浸式体验)
+macos-titlebar-style = transparent
+
+# 键位映射：将 Option 键映射为 Alt (对 Vim/Emacs/CLI 至关重要)
+macos-option-as-alt = true
+
+
+# --- 5. 交互与 Shell (Interaction) ---
+# 自动检测 Shell (zsh/fish) 并注入脚本
+shell-integration = detect
+
+# 打字时自动隐藏鼠标，防止遮挡视线
+mouse-hide-while-typing = true
+
+# 滚动回溯行数 (保存更多历史日志)
+scrollback-limit = 10000
+
+
+# --- 6. 剪贴板安全 (Clipboard) ---
+# 复制时自动去除末尾空格 (防止误执行)
+clipboard-trim-trailing-spaces = true
+
+# 粘贴保护：粘贴多行内容时弹出确认警告
+clipboard-paste-protection = true
+
+
+# --- 7. 特殊功能：地震模式 (Quick Terminal) ---
+# 快捷键：Cmd + Ctrl + ` (波浪号) 唤出顶部悬浮终端
+keybind = cmd+ctrl+grave_accent=toggle_quick_terminal
+
+# 悬浮终端行为设置
+quick-terminal-position = top
+quick-terminal-autohide = true
+quick-terminal-animation-duration = 0.2
