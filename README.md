@@ -78,7 +78,25 @@ ln -s "$(pwd)/dotfiles/.config/opencode/oh-my-opencode.json" ~/.config/opencode/
 ln -s "$(pwd)/dotfiles/.config/opencode/antigravity.json" ~/.config/opencode/antigravity.json
 ```
 
-## 如何维护 Brewfile
+## 🚀 Brewfile 使用指南
+
+`Brewfile` 是 Homebrew 的清单文件，它记录了当前系统安装的所有软件（Brew、Cask、Mas 等）。通过它，你可以在新 Mac 上一键还原熟悉的开发环境。
+
+### 📥 一键安装/还原环境
+
+在新机器或重装系统后，执行以下命令即可自动安装 `apps/Brewfile` 中列出的所有软件：
+
+```bash
+# 1. 确保已进入项目根目录
+cd /path/to/macos-personal-config
+
+# 2. 开始安装
+brew bundle --file=apps/Brewfile
+```
+
+> **提示**: 如果安装过程中某个软件失败，可以再次运行该命令，Homebrew 会自动跳过已安装成功的软件。
+
+### 🔄 维护与更新
 
 当你在系统中手动安装或卸载了软件后，可以通过以下方式更新本项目中的 `Brewfile`：
 
