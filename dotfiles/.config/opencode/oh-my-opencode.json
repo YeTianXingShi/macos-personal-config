@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "google_auth": false,
+  "sisyphus_agent": {
+    "planner_enabled": true,
+    "locale": "zh-CN"
+  },
+  "git_master": {
+    "commit_footer": true,
+    "include_co_authored_by": true
+  },
+  "agents": {
+    "Sisyphus": {
+      "model": "google/gemini-3-pro-preview",
+      "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese."
+    },
+    "Planner-Sisyphus": {
+      "model": "google/gemini-3-pro-preview",
+      "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese."
+    },
+    "oracle": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "prompt_append": "请务必使用中文（简体中文）进行回复和分析。"
+    },
+    "explore": {
+      "model": "google/gemini-3-flash",
+      "prompt_append": "请务必使用中文（简体中文）汇报搜索结果。",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow"
+      }
+    },
+    "multimodal-looker": {
+      "model": "google/antigravity-gemini-3-pro",
+      "prompt_append": "请使用中文描述图片内容。"
+    },
+    "librarian": {
+      "model": "google/antigravity-gemini-3-flash",
+      "prompt_append": "请使用中文总结文档和搜索结果。"
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "google/antigravity-claude-sonnet-4-5",
+      "prompt_append": "请使用中文解释你的设计思路和代码变更。"
+    },
+    "document-writer": {
+      "model": "google/antigravity-gemini-3-flash",
+      "prompt_append": "请使用中文编写文档。"
+    }
+  }
+}
