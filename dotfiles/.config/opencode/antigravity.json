@@ -1,3 +1,9 @@
 {
-    "account_selection_strategy": "hybrid"
+  "account_selection_strategy": "round-robin",
+  "switch_on_first_rate_limit": true,
+  "session_recovery": true,
+  "auto_resume": true,
+  "resume_text": "请继续",
+  "request_timing_jitter": 500,
+  "debug": false
 }
