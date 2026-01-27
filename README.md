@@ -1,5 +1,9 @@
 # macOS Personal Configuration
 
+> **Note**: This repository is for personal use and backup purposes. Feel free to reference it, but use at your own risk.
+>
+> **注意**：本项目仅供个人备份与使用。欢迎参考，但请自行承担使用风险。
+
 这个项目用于存放个性化的 macOS Dotfiles 和应用列表。
 
 为了确保安全性与透明度，本项目**不包含**自动执行脚本。请按照以下步骤手动检查并应用配置。
