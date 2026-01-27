@@ -1,30 +1,114 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
-  "google_auth": false,
   "sisyphus_agent": {
     "planner_enabled": true,
-    "locale": "zh-CN"
+    "default_builder_enabled": false,
+    "replace_plan": true
+  },
+  "background_task": {
+    "defaultConcurrency": 5,
+    "providerConcurrency": {
+      "google": 10,
+      "antigravity": 10
+    },
+    "modelConcurrency": {
+      "google/antigravity-gemini-3-flash": 15
+    }
   },
   "git_master": {
     "commit_footer": true,
     "include_co_authored_by": true
   },
+  "experimental": {
+    "truncate_all_tool_outputs": true,
+    "aggressive_truncation": true,
+    "auto_resume": true
+  },
+  "lsp": {
+    "typescript-language-server": {
+      "command": [
+        "typescript-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx",
+        ".mjs",
+        ".cjs"
+      ],
+      "priority": 10
+    },
+    "pyright": {
+      "command": [
+        "pyright-langserver",
+        "--stdio"
+      ],
+      "extensions": [
+        ".py"
+      ],
+      "priority": 10
+    }
+  },
+  "categories": {
+    "visual": {
+      "model": "google/antigravity-gemini-3-pro",
+      "temperature": 0.7,
+      "prompt_append": "请使用中文描述视觉设计和UI组件。Use shadcn/ui components and Tailwind CSS if applicable."
+    },
+    "quick": {
+      "model": "google/antigravity-gemini-3-flash",
+      "temperature": 0.3,
+      "prompt_append": "请务必使用中文（简体中文）极其简练地回复。"
+    },
+    "business-logic": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "temperature": 0.1,
+      "prompt_append": "请务必使用中文（简体中文）进行深度分析。"
+    },
+    "writing": {
+      "model": "google/antigravity-gemini-3-pro",
+      "temperature": 0.5,
+      "prompt_append": "请使用中文编写文档，文档风格应当专业且易读，结构清晰。"
+    },
+    "frontend": {
+      "model": "google/antigravity-claude-sonnet-4-5",
+      "temperature": 0.2,
+      "prompt_append": "请使用中文解释你的设计思路和代码变更。专注于现代化的前端交互设计和最佳实践。"
+    }
+  },
   "agents": {
-    "Sisyphus": {
-      "model": "google/gemini-3-pro-preview",
+    "sisyphus": {
+      "model": "google/antigravity-claude-sonnet-4-5",
+      "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese.",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "doom_loop": "allow"
+      }
+    },
+    "prometheus": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "reasoningEffort": "high",
       "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese."
     },
-    "Planner-Sisyphus": {
-      "model": "google/gemini-3-pro-preview",
-      "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese."
+    "metis": {
+      "model": "google/antigravity-claude-sonnet-4-5",
+      "prompt_append": "请务必使用中文（简体中文）协助制定计划，指出潜在的遗漏点。"
+    },
+    "momus": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "prompt_append": "请务必使用中文（简体中文）严格审查计划的可行性和逻辑漏洞。"
     },
     "oracle": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
-      "prompt_append": "请务必使用中文（简体中文）进行回复和分析。"
+      "prompt_append": "请务必使用中文（简体中文）进行回复和分析，专注于战略层面的建议。"
     },
     "explore": {
-      "model": "google/gemini-3-flash",
-      "prompt_append": "请务必使用中文（简体中文）汇报搜索结果。",
+      "model": "google/antigravity-gemini-3-flash",
+      "prompt_append": "请务必使用中文（简体中文）汇报搜索结果。优先从搜索结果中提取最新信息。",
       "permission": {
         "edit": "allow",
         "bash": "allow",
@@ -33,19 +117,11 @@
     },
     "multimodal-looker": {
       "model": "google/antigravity-gemini-3-pro",
-      "prompt_append": "请使用中文描述图片内容。"
+      "prompt_append": "请使用中文详细描述图片内容，关注UI细节和布局。"
     },
     "librarian": {
       "model": "google/antigravity-gemini-3-flash",
-      "prompt_append": "请使用中文总结文档和搜索结果。"
-    },
-    "frontend-ui-ux-engineer": {
-      "model": "google/antigravity-claude-sonnet-4-5",
-      "prompt_append": "请使用中文解释你的设计思路和代码变更。"
-    },
-    "document-writer": {
-      "model": "google/antigravity-gemini-3-flash",
-      "prompt_append": "请使用中文编写文档。"
+      "prompt_append": "请使用中文总结文档和搜索结果，保持客观准确。"
     }
   }
 }
