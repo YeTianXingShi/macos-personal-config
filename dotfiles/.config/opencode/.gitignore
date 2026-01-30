@@ -1,0 +1,39 @@
+# OpenCode 配置 - Git 管理规则
+# 仅跟踪可移植的配置文件
+
+# ✅ 跟踪的文件:
+# - opencode.json (插件和模型配置)
+# - antigravity.json (Antigravity 配置，无敏感信息)
+# - oh-my-opencode.json (OhMyOpenCode 配置)
+# - dcp.jsonc (动态上下文修剪配置)
+# - ocx.jsonc (OCX 注册表配置)
+# - plugin/worktree.ts (自定义 worktree 插件)
+# - plugin/worktree/* (worktree 插件依赖)
+
+# ❌ 排除的文件 (敏感或自动生成):
+
+# 账户和认证信息
+antigravity-accounts.json
+antigravity-signature-cache.json
+antigravity-logs/
+antigravity-accounts.json.*.tmp
+
+# 包管理文件 (自动生成)
+node_modules/
+package.json
+bun.lock
+ocx.lock
+
+# 项目特定配置
+.opencode/
+profiles/
+
+# 系统文件
+.DS_Store
+*.swp
+*.swo
+*~
+
+# 备份文件
+*.bak
+*.backup.*

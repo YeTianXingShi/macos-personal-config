@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Opencode-DCP/opencode-dynamic-context-pruning/master/dcp.schema.json",
+  
+  // ✅ 启用插件
+  "enabled": true,
+  
+  // ⚠️ 建议启用调试,监控修剪效果(正式使用后可关闭)
+  "debug": false,
+  
+  // 📊 通知级别: "detailed" 帮助你了解修剪行为
+  "pruneNotification": "detailed",
+  
+  // 🛡️ Turn Protection - 给 AI 4轮机会使用工具输出
+  "turnProtection": {
+    "enabled": true,
+    "turns": 4
+  },
+  
+  // 📁 保护关键文件不被修剪
+  "protectedFilePatterns": [
+    "**/.env",
+    "**/.env.*",
+    "**/package.json",
+    "**/tsconfig.json",
+    "**/opencode.json",
+    "**/*.config.{js,ts,mjs,cjs}"
+  ],
+  
+  // 🤖 LLM 驱动的修剪工具
+  "tools": {
+    "settings": {
+      // ✅ 启用提示 - 每10个工具结果提醒一次
+      "nudgeEnabled": true,
+      "nudgeFrequency": 10,
+      "protectedTools": []
+    },
+    "discard": {
+      "enabled": true
+    },
+    "extract": {
+      "enabled": true,
+      // 建议启用以观察提取质量
+      "showDistillation": true
+    }
+  },
+  
+  // ⚙️ 自动修剪策略
+  "strategies": {
+    // ✅ 去重 - 移除重复的工具调用
+    "deduplication": {
+      "enabled": true,
+      "protectedTools": []
+    },
+    
+    // ✅ 写操作覆盖 - 配合 oh-my-opencode 的激进截断
+    "supersedeWrites": {
+      "enabled": true
+    },
+    
+    // ✅ 清理错误 - 4轮后清理错误工具的输入
+    "purgeErrors": {
+      "enabled": true,
+      "turns": 4,
+      "protectedTools": []
+    }
+  },
+  
+  // 📝 Slash 命令配置
+  "commands": {
+    "enabled": true,
+    "protectedTools": []
+  }
+}
