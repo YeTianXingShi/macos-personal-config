@@ -83,7 +83,7 @@
   },
   "agents": {
     "sisyphus": {
-      "model": "google/antigravity-claude-sonnet-4-5",
+      "model": "google/antigravity-gemini-3-pro",
       "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese.",
       "permission": {
         "edit": "allow",
