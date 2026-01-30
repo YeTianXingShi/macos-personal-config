@@ -45,40 +45,40 @@
     "visual-engineering": {
       "model": "google/antigravity-gemini-3-pro",
       "temperature": 0.7,
-      "prompt_append": "请使用中文描述视觉设计和UI组件。Use shadcn/ui components and Tailwind CSS if applicable."
+      "prompt_append": "请使用中文(简体中文)描述视觉设计和UI组件。Use shadcn/ui components and Tailwind CSS if applicable."
     },
     "quick": {
       "model": "google/antigravity-gemini-3-flash",
       "temperature": 0.3,
-      "prompt_append": "请务必使用中文（简体中文）极其简练地回复。"
+      "prompt_append": "请使用中文(简体中文)简练回复。"
     },
     "ultrabrain": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
       "reasoningEffort": "high",
       "temperature": 0.1,
-      "prompt_append": "请务必使用中文（简体中文）进行深度分析和架构设计。"
+      "prompt_append": "请使用中文(简体中文)进行深度分析和架构设计。"
     },
     "artistry": {
       "model": "google/antigravity-gemini-3-pro",
       "variant": "high",
       "temperature": 0.9,
-      "prompt_append": "请使用中文进行创意性思考，提供新颖独特的方案。"
+      "prompt_append": "请使用中文(简体中文)进行创意性思考，提供新颖独特的方案。"
     },
     "unspecified-low": {
       "model": "google/antigravity-claude-sonnet-4-5",
       "temperature": 0.2,
-      "prompt_append": "请使用中文（简体中文）高效完成任务。"
+      "prompt_append": "请使用中文(简体中文)高效完成任务。"
     },
     "unspecified-high": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
       "variant": "max",
       "temperature": 0.1,
-      "prompt_append": "请使用中文（简体中文）进行全面深入的分析。"
+      "prompt_append": "请使用中文(简体中文)进行全面深入的分析。"
     },
     "writing": {
       "model": "google/antigravity-gemini-3-flash",
       "temperature": 0.5,
-      "prompt_append": "请使用中文编写文档，文档风格应当专业且易读，结构清晰。"
+      "prompt_append": "请使用中文(简体中文)编写文档，文档风格应当专业且易读，结构清晰。"
     }
   },
   "agents": {
@@ -100,21 +100,21 @@
     "metis": {
       "model": "google/antigravity-claude-sonnet-4-5-thinking",
       "reasoningEffort": "medium",
-      "prompt_append": "请务必使用中文（简体中文）协助制定计划，指出潜在的遗漏点。"
+      "prompt_append": "请使用中文(简体中文)协助制定计划，指出潜在的遗漏点。"
     },
     "momus": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
       "reasoningEffort": "high",
-      "prompt_append": "请务必使用中文（简体中文）严格审查计划的可行性和逻辑漏洞。"
+      "prompt_append": "请使用中文(简体中文)严格审查计划的可行性和逻辑漏洞。"
     },
     "oracle": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
       "reasoningEffort": "high",
-      "prompt_append": "请务必使用中文（简体中文）进行回复和分析，专注于战略层面的建议。"
+      "prompt_append": "请使用中文(简体中文)进行回复和分析，专注于战略层面的建议。"
     },
     "explore": {
       "model": "google/antigravity-gemini-3-flash",
-      "prompt_append": "请务必使用中文（简体中文）汇报搜索结果。优先从搜索结果中提取最新信息。",
+      "prompt_append": "请使用中文(简体中文)汇报搜索结果，优先从搜索结果中提取最新信息。",
       "permission": {
         "edit": "allow",
         "bash": "allow",
@@ -123,15 +123,15 @@
     },
     "multimodal-looker": {
       "model": "google/antigravity-gemini-3-pro",
-      "prompt_append": "请使用中文详细描述图片内容，关注UI细节和布局。"
+      "prompt_append": "请使用中文(简体中文)详细描述图片内容，关注UI细节和布局。"
     },
     "librarian": {
       "model": "google/antigravity-gemini-3-flash",
-      "prompt_append": "请使用中文总结文档和搜索结果，保持客观准确。"
+      "prompt_append": "请使用中文(简体中文)总结文档和搜索结果，保持客观准确。"
     },
     "atlas": {
       "model": "google/antigravity-claude-sonnet-4-5",
-      "prompt_append": "请使用中文（简体中文）执行任务，严格遵循计划步骤。"
+      "prompt_append": "请使用中文(简体中文)执行任务，严格遵循计划步骤。"
     }
   }
 }
