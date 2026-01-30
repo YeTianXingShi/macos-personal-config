@@ -46,12 +46,6 @@ else
     export EDITOR='vim'
 fi
 
-# 🔑 GitHub Token (for MCP and gh CLI)
-# ⚠️ 在新机器上需要手动设置: export GITHUB_TOKEN="your_token_here"
-# 获取 token: gh auth token
-if [ -z "$GITHUB_TOKEN" ]; then
-    export GITHUB_TOKEN=$(gh auth token 2>/dev/null || echo "")
-fi
 
 # -----------------------------------------------------------------------------
 # 2. Tool Initialization (工具初始化)
