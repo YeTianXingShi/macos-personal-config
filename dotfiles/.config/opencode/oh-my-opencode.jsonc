@@ -1,19 +1,31 @@
 {
+  // Schema: 启用 IDE 自动补全和配置验证
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  
+  // Sisyphus Agent: 主要编排代理配置
+  // 参考文档: https://github.com/code-yeongyu/oh-my-opencode/blob/dev/docs/configurations.md#sisyphus-agent
   "sisyphus_agent": {
-    "planner_enabled": true,
-    "default_builder_enabled": false,
-    "replace_plan": true
+    "planner_enabled": true,        // 启用 Prometheus (Planner) 代理,使用 work-planner 方法论
+    "default_builder_enabled": false, // 禁用 OpenCode-Builder 代理 (OpenCode 默认 build 的重命名版本)
+    "replace_plan": true             // 将默认 plan 代理降级为子代理模式
   },
+  
+  // Git Master: Git 提交行为配置
+  // 参考文档: https://github.com/code-yeongyu/oh-my-opencode/blob/dev/docs/configurations.md#git-master
   "git_master": {
-    "commit_footer": true,
-    "include_co_authored_by": true
+    "commit_footer": true,           // 在提交信息中添加 "Ultraworked with Sisyphus" 脚注
+    "include_co_authored_by": true   // 添加 Co-authored-by: Sisyphus <clio-agent@sisyphuslabs.ai> 尾注
   },
+  
+  // Experimental: 实验性功能配置
   "experimental": {
-    "truncate_all_tool_outputs": true,
-    "aggressive_truncation": true,
-    "auto_resume": true
+    "truncate_all_tool_outputs": true, // 截断所有工具输出以节省上下文
+    "aggressive_truncation": true,     // 启用激进的截断策略
+    "auto_resume": true                // 启用自动恢复功能
   },
+  
+  // LSP: Language Server Protocol 配置
+  // 参考文档: https://github.com/code-yeongyu/oh-my-opencode/blob/dev/docs/configurations.md#agents
   "lsp": {
     "typescript-language-server": {
       "command": [
@@ -28,7 +40,7 @@
         ".mjs",
         ".cjs"
       ],
-      "priority": 10
+      "priority": 10  // LSP 优先级,数字越大优先级越高
     },
     "pyright": {
       "command": [
@@ -41,77 +53,116 @@
       "priority": 10
     }
   },
+  
+  // Categories: 任务类别配置,通过 delegate_task 工具进行领域特定的任务委派
+  // 参考文档: https://github.com/code-yeongyu/oh-my-opencode/blob/dev/docs/configurations.md#categories
+  // 重要: 类别不会自动使用内置默认模型,除非在此配置。模型解析优先级:
+  // 1. 用户配置的模型 (此文件)
+  // 2. 类别的内置默认 (如果添加到配置中)
+  // 3. 系统默认模型 (来自 opencode.json)
   "categories": {
+    // Visual Engineering: 前端、UI/UX、设计、样式、动画
     "visual-engineering": {
-      "model": "google/antigravity-gemini-3-pro",
-      "temperature": 0.7,
+      "model": "google/antigravity-gemini-3-pro",  // 使用 Gemini 3 Pro,适合 UI 任务
+      "temperature": 0.7,                          // 较高温度支持创意性输出
       "prompt_append": "请使用中文(简体中文)描述视觉设计和UI组件。Use shadcn/ui components and Tailwind CSS if applicable."
     },
+    
+    // Quick: 简单任务 - 单文件修改、错字修复、简单修改
     "quick": {
-      "model": "google/antigravity-gemini-3-flash",
-      "temperature": 0.3,
+      "model": "google/antigravity-gemini-3-flash", // 使用 Flash 快速且便宜
+      "temperature": 0.3,                           // 低温度保证精确性
       "prompt_append": "请使用中文(简体中文)简练回复。"
     },
+    
+    // Ultrabrain: 深度逻辑推理、复杂架构决策
+    // 仅用于真正困难的、逻辑密集型任务。给出清晰的目标,而非逐步指令
     "ultrabrain": {
-      "model": "google/antigravity-claude-opus-4-5-thinking",
-      "reasoningEffort": "high",
-      "temperature": 0.1,
+      "model": "google/antigravity-claude-opus-4-5-thinking", // 使用思考模型进行深度推理
+      "reasoningEffort": "high",                              // 高推理努力级别
+      "temperature": 0.1,                                     // 低温度确保严谨性
       "prompt_append": "请使用中文(简体中文)进行深度分析和架构设计。"
     },
+    
+    // Artistry: 高度创意/艺术性任务、新颖想法
+    // 用于需要超越标准模式的复杂问题解决
     "artistry": {
       "model": "google/antigravity-gemini-3-pro",
-      "variant": "high",
-      "temperature": 0.9,
+      "variant": "high",        // 高变体支持更有创意的输出
+      "temperature": 0.9,       // 高温度鼓励创造性
       "prompt_append": "请使用中文(简体中文)进行创意性思考，提供新颖独特的方案。"
     },
+    
+    // Unspecified-Low: 不适合其他类别的任务,低努力需求
     "unspecified-low": {
       "model": "google/antigravity-claude-sonnet-4-5",
       "temperature": 0.2,
       "prompt_append": "请使用中文(简体中文)高效完成任务。"
     },
+    
+    // Unspecified-High: 不适合其他类别的任务,高努力需求
     "unspecified-high": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
-      "variant": "max",
+      "variant": "max",         // Max 变体提供最大能力
       "temperature": 0.1,
       "prompt_append": "请使用中文(简体中文)进行全面深入的分析。"
     },
+    
+    // Writing: 文档编写、散文、技术写作
     "writing": {
       "model": "google/antigravity-gemini-3-flash",
-      "temperature": 0.5,
+      "temperature": 0.5,       // 中等温度平衡创造性和一致性
       "prompt_append": "请使用中文(简体中文)编写文档，文档风格应当专业且易读，结构清晰。"
     }
   },
+  
+  // Agents: 内置代理设置覆盖
+  // 参考文档: https://github.com/code-yeongyu/oh-my-opencode/blob/dev/docs/configurations.md#agents
+  // 每个代理支持: model, temperature, top_p, prompt, prompt_append, tools, disable, 
+  //               description, mode, color, permission, category, variant, maxTokens, 
+  //               thinking, reasoningEffort, textVerbosity, providerOptions
   "agents": {
+    // Sisyphus: 主要编排代理 (与用户直接交互)
     "sisyphus": {
       "model": "google/antigravity-gemini-3-pro",
       "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese.",
       "permission": {
-        "edit": "allow",
-        "bash": "allow",
-        "webfetch": "allow",
-        "doom_loop": "allow"
+        "edit": "allow",      // 允许文件编辑
+        "bash": "allow",      // 允许 Bash 命令执行
+        "webfetch": "allow",  // 允许 Web 请求
+        "doom_loop": "allow"  // 允许覆盖无限循环检测
       }
     },
+    
+    // Prometheus (Planner): 规划代理,使用 work-planner 方法论
     "prometheus": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
-      "reasoningEffort": "high",
+      "reasoningEffort": "high",  // 高推理级别用于规划
       "prompt_append": "\n\nIMPORTANT: You MUST respond in Simplified Chinese (简体中文). Even for thinking process or planning, please use Chinese."
     },
+    
+    // Metis (Plan Consultant): 规划前分析代理,识别隐藏需求和 AI 失败点
     "metis": {
       "model": "google/antigravity-claude-sonnet-4-5-thinking",
       "reasoningEffort": "medium",
       "prompt_append": "请使用中文(简体中文)协助制定计划，指出潜在的遗漏点。"
     },
+    
+    // Momus (Plan Reviewer): 计划审查代理,评估可行性和逻辑漏洞
     "momus": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
       "reasoningEffort": "high",
       "prompt_append": "请使用中文(简体中文)严格审查计划的可行性和逻辑漏洞。"
     },
+    
+    // Oracle: 只读咨询代理,用于调试和架构的高智商推理专家
     "oracle": {
       "model": "google/antigravity-claude-opus-4-5-thinking",
       "reasoningEffort": "high",
       "prompt_append": "请使用中文(简体中文)进行回复和分析，专注于战略层面的建议。"
     },
+    
+    // Explore: 代码库的上下文 grep,回答 "X 在哪里?", "哪个文件有 Y?"
     "explore": {
       "model": "google/antigravity-gemini-3-flash",
       "prompt_append": "请使用中文(简体中文)汇报搜索结果，优先从搜索结果中提取最新信息。",
@@ -121,14 +172,21 @@
         "webfetch": "allow"
       }
     },
+    
+    // Multimodal-Looker: 多模态内容分析 (PDF、图片、图表)
     "multimodal-looker": {
       "model": "google/antigravity-gemini-3-pro",
       "prompt_append": "请使用中文(简体中文)详细描述图片内容，关注UI细节和布局。"
     },
+    
+    // Librarian: 多仓库分析、搜索远程代码库、检索官方文档、查找实现示例
+    // 使用 GitHub CLI、Context7 和 Web Search
     "librarian": {
       "model": "google/antigravity-gemini-3-flash",
       "prompt_append": "请使用中文(简体中文)总结文档和搜索结果，保持客观准确。"
     },
+    
+    // Atlas: 任务执行代理,严格遵循计划步骤
     "atlas": {
       "model": "google/antigravity-claude-sonnet-4-5",
       "prompt_append": "请使用中文(简体中文)执行任务，严格遵循计划步骤。"
