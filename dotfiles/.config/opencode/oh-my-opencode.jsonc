@@ -191,5 +191,10 @@
       "model": "google/antigravity-claude-sonnet-4-5",
       "prompt_append": "请使用中文(简体中文)执行任务，严格遵循计划步骤。"
     }
-  }
+  },
+  
+  // 🔧 Disabled Hooks (禁用的 Hooks)
+  // 禁用与 opencode-supermemory 插件冲突的 Hooks
+  // 参考: https://github.com/supermemoryai/opencode-supermemory#usage-with-oh-my-opencode
+  "disabled_hooks": ["anthropic-context-window-limit-recovery"]
 }
